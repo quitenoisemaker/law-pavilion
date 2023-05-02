@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('clients')->group(function () {
+    Route::get('/index', [ClientDetailController::class, 'index'])->name('clients.create');
+    Route::post('/store', [ClientDetailController::class, 'store'])->name('clients.store');
+    Route::get('/filter', [ClientDetailController::class, 'filter'])->name('clients.store');
+});
