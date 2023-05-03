@@ -20,7 +20,7 @@ class ClientDetailController extends Controller
 
     public function index()
     {
-        $noOfRecords = 2;
+        $noOfRecords = 10;
         $clients = ClientDetail::getClients()->paginate($noOfRecords);
 
         return view('client-detail.index', compact('clients'));
@@ -41,8 +41,14 @@ class ClientDetailController extends Controller
         return redirect('clients/index');
     }
 
-    public function filter()
+    public function filter(Request $request)
     {
-        # code...
+        $queryData = $this->clientDetailService->searchClientByLastName($request);
+
+        return [
+            'success' => true,
+            'totalRecords' => $queryData->count(),
+            'data' => $queryData
+        ];
     }
 }

@@ -34,4 +34,14 @@ class ClientDetail extends Model
             'date_of_birth'
         )->orderBy('id', 'DESC');
     }
+
+    public function scopeNullProfileImage($query): void
+    {
+        $query->whereNull('profile_image');
+    }
+
+    public function scopeSearchLastName($query, $searchName): void
+    {
+        $query->where('lastname', 'LIKE', '%' . $searchName . '%');
+    }
 }

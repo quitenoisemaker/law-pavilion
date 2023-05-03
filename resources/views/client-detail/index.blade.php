@@ -37,7 +37,7 @@
                                         <th scope="col">Case Detail</th>
                                     </tr>
                                 </thead>
-                                <tbody id="item-body">
+                                <tbody id="client-body">
                                     @foreach ($clients as $client)
                                         <tr>
                                             <td>{{ $client->created_at->format('Y-m-d') }}</td>
