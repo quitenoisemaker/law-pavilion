@@ -38,10 +38,8 @@
                                 <td>${row.firstname}</td>
                                 <td>${row.lastname}</td>
                                 <td>${row.email}</td>
-                                <td>${row.date_of_birth}</td>
-                                <td>${row.primary_legal_counsel}</td>
-                                <td>${row.case_detail}</td>`;
-
+                                <td>${row.date_of_birth}</td>`;
+                    htmlCode += `<td><a href="${row.show_link}" class="btn btn-success">View profile</a></td>`;
                     htmlCode += '</tr>';
                 });
             } else {

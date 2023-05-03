@@ -33,8 +33,7 @@
                                         <th scope="col">Last name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Date of Birth</th>
-                                        <th scope="col">Primary Legal Counsel</th>
-                                        <th scope="col">Case Detail</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody id="client-body">
@@ -53,8 +52,8 @@
                                             <td>{{ $client->lastname }}</td>
                                             <td>{{ $client->email }}</td>
                                             <td>{{ $client->date_of_birth }}</td>
-                                            <td>{{ $client->primary_legal_counsel }}</td>
-                                            <td>{{ $client->case_detail }}</td>
+                                            <td><a href="{{ route('clients.show', ['clientDetail' => $client->id]) }}"
+                                                class="btn btn-success">View profile</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

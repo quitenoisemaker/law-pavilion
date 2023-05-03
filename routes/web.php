@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ClientDetailController;
+use App\Events\ClientCreated;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientDetailController;
+use App\Service\Client\ClientDetailService;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('clients')->group(function () {
     Route::get('/index', [ClientDetailController::class, 'index'])->name('clients.index');
     Route::get('/create', [ClientDetailController::class, 'create'])->name('clients.create');
+    Route::get('/show/{clientDetail}', [ClientDetailController::class, 'show'])->name('clients.show');
     Route::post('/store', [ClientDetailController::class, 'store'])->name('clients.store');
     Route::get('/filter', [ClientDetailController::class, 'filter'])->name('clients.filter');
 });

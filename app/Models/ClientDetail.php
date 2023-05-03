@@ -18,19 +18,18 @@ class ClientDetail extends Model
 
     public static function storeClientProfile($request)
     {
-        self::create($request);
+        return self::create($request);
     }
 
     public static function getClients()
     {
         return self::select(
+            'id',
             'firstname',
             'lastname',
             'profile_image',
             'email',
             'created_at',
-            'primary_legal_counsel',
-            'case_detail',
             'date_of_birth'
         )->orderBy('id', 'DESC');
     }

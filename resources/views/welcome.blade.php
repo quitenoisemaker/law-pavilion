@@ -26,8 +26,8 @@
 
             <div class="content">
                 <div class="title m-b-md text-center">
-                    <h2>Law Pavilion</h2>
-                        <h3><a href="{{ url('/clients/index') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Click To Add Client</a></h3>
+                    <h2>Welcome to Law Firm X</h2>
+                        <h3><a href="{{ url('/clients/index') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Click To Profile a Client</a></h3>
                 </div>
             </div>
         </div>

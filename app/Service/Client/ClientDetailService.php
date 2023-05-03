@@ -23,6 +23,12 @@ class ClientDetailService
         }
     }
 
+    /**
+     * search Client By LastName
+     *
+     * @param  \Illuminate\Http\Request $request profile_image
+     * @return App\Http\Resources\ClientDetailResource $queryData
+     */
     public function searchClientByLastName($request)
     {
         $noOfRecords = 10;
