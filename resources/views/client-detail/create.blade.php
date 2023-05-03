@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Create client Profile</div>
@@ -19,6 +19,10 @@
                         <form method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-row">
+                                <div class="form-group col-12">
+                                    <label for="date_profiled">Date Profiled<span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" name="date_profiled" id="date_profiled">
+                                </div>
                                 <div class="form-group col-12">
                                     <label for="firstname">First Name<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="firstname" id="firstname">

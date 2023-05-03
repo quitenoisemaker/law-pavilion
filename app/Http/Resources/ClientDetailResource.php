@@ -24,7 +24,7 @@ class ClientDetailResource extends JsonResource
             'date_of_birth' => $this->date_of_birth,
             'case_detail' => $this->case_detail,
             'show_link' => route('clients.show', ['clientDetail' => $this->id]),
-            'date_profiled' => $this->created_at->format('Y-m-d'),
+            'date_profiled' => $this->date_profiled,
         ];
     }
 }

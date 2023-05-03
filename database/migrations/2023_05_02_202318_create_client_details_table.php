@@ -20,6 +20,7 @@ class CreateClientDetailsTable extends Migration
             $table->text('primary_legal_counsel');
             $table->string('email')->unique();
             $table->date('date_of_birth');
+            $table->date('date_profiled');
             $table->string('profile_image')->nullable();
             $table->text('case_detail')->nullable();
             $table->timestamps();

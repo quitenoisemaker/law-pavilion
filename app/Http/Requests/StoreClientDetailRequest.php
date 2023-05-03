@@ -30,6 +30,7 @@ class StoreClientDetailRequest extends FormRequest
             'profile_image' => 'nullable|mimes:jpeg,png,jpg',
             'email' => 'required|string|email|max:255|unique:client_details',
             'date_of_birth' => 'required|date',
+            'date_profiled' => 'required|date',
             'case_detail' => 'required',
             'primary_legal_counsel' => 'required'
         ];

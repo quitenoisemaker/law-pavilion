@@ -39,7 +39,7 @@
                                 <tbody id="client-body">
                                     @foreach ($clients as $client)
                                         <tr>
-                                            <td>{{ $client->created_at->format('Y-m-d') }}</td>
+                                            <td>{{ $client->date_profiled }}</td>
                                             <td>
                                                 @if ($client->profile_image)
                                                     <img src="{{ URL::asset('storage/' . $client->profile_image) }}"
