@@ -13,7 +13,7 @@ class StoreClientDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,13 @@ class StoreClientDetailRequest extends FormRequest
     {
         return [
             //
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'profile_image' => 'nullable|mimes:jpeg,png,jpg',
+            'email' => 'required|string|email|max:255|unique:client_details',
+            'date_of_birth' => 'required|date',
+            'case_detail' => 'required',
+            'primary_legal_counsel' => 'required'
         ];
     }
 }

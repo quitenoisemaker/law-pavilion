@@ -2,19 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClientDetailRequest;
+use App\Models\ClientDetail;
+use App\Service\Client\ClientDetailService;
 use Illuminate\Http\Request;
 
 class ClientDetailController extends Controller
 {
     //
-    public function index()
+
+    protected $clientDetailService;
+
+    public function __construct(ClientDetailService $clientDetailService)
     {
-        return view('client-detail.index');
+        $this->clientDetailService = $clientDetailService;
     }
 
-    public function store(Request $request)
+    public function index()
     {
-        # code...
+        $noOfRecords = 2;
+        $clients = ClientDetail::getClients()->paginate($noOfRecords);
+
+        return view('client-detail.index', compact('clients'));
+    }
+
+    public function create()
+    {
+        return view('client-detail.create');
+    }
+
+    public function store(StoreClientDetailRequest $request)
+    {
+        $validatedData = $request->validated();
+        $imagePath = $this->clientDetailService->storeClientProfileImage($request);
+        $validatedData['profile_image'] = $imagePath;
+        ClientDetail::storeClientProfile($validatedData);
+
+        return redirect('clients/index');
     }
 
     public function filter()

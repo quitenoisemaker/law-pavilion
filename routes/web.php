@@ -23,7 +23,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('clients')->group(function () {
-    Route::get('/index', [ClientDetailController::class, 'index'])->name('clients.create');
+    Route::get('/index', [ClientDetailController::class, 'index'])->name('clients.index');
+    Route::get('/create', [ClientDetailController::class, 'create'])->name('clients.create');
     Route::post('/store', [ClientDetailController::class, 'store'])->name('clients.store');
-    Route::get('/filter', [ClientDetailController::class, 'filter'])->name('clients.store');
+    Route::get('/filter', [ClientDetailController::class, 'filter'])->name('clients.filter');
 });

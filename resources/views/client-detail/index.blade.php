@@ -24,7 +24,7 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
                     <div class="card-body">
                         <table class="table table-striped">
-                            {{-- @if (count($getItems) > 0) --}}
+                            @if (count($clients) > 0)
                                 <thead>
                                     <tr>
                                         <th scope="col">Date Profiled</th>
@@ -34,45 +34,42 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Date of Birth</th>
                                         <th scope="col">Primary Legal Counsel</th>
-                                        <th scope="col">Case Detail</th>   
+                                        <th scope="col">Case Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody id="item-body">
-                                    {{-- @foreach ($getItems as $getItem)
-                                        @php
-                                            $no++;
-                                        @endphp
+                                    @foreach ($clients as $client)
                                         <tr>
-                                            <th scope="row">{{ $no }}</th>
-                                            <td>{{ $getItem->name }}</td>
-                                            <td>{{ $getItem->description }}</td>
-                                            <td><img src="{{ URL::asset('storage/' . $getItem->image) }}" width="100">
-                                            </td>
-                                            <td><a href="{{ route('item.edit', ['id' => $getItem->id]) }}"
-                                                    class="btn btn-primary">Edit</a>
-                                            </td>
+                                            <td>{{ $client->created_at->format('Y-m-d') }}</td>
                                             <td>
-                                                <form action="{{ url('item/delete', $getItem->id) }}" method="POST">
-                                                    {{ method_field('DELETE') }}
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">Delete
-                                                        Item</button>
-                                                </form>
+                                                @if ($client->profile_image)
+                                                    <img src="{{ URL::asset('storage/' . $client->profile_image) }}"
+                                                        width="100">
+                                                @else
+                                                    <p>No image</p>
+                                                @endif
                                             </td>
+                                            <td>{{ $client->firstname }}</td>
+                                            <td>{{ $client->lastname }}</td>
+                                            <td>{{ $client->email }}</td>
+                                            <td>{{ $client->date_of_birth }}</td>
+                                            <td>{{ $client->primary_legal_counsel }}</td>
+                                            <td>{{ $client->case_detail }}</td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
-                            {{-- @else
-                                <div class="text-center">{{ 'No Items, click on the button above to add Item' }}</div>
-                            @endif --}}
+                            @else
+                                <div class="text-center">{{ 'No Clients, click on the button above to profile client' }}
+                                </div>
+                            @endif
                         </table>
                     </div>
-                    {{-- {{ $getItems->links() }} --}}
+                    {{ $clients->links() }}
                 </div>
             </div>
         </div>
     </div>
 @endsection
-{{-- @section('scripts')
-    @include('items.filter-script')
-@endsection --}}
+@section('scripts')
+    @include('client-detail.script')
+@endsection

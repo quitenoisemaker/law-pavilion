@@ -14,4 +14,24 @@ class ClientDetail extends Model
         'email', 'date_of_birth', 'profile_image',
         'case_detail'
     ];
+
+
+    public static function storeClientProfile($request)
+    {
+        self::create($request);
+    }
+
+    public static function getClients()
+    {
+        return self::select(
+            'firstname',
+            'lastname',
+            'profile_image',
+            'email',
+            'created_at',
+            'primary_legal_counsel',
+            'case_detail',
+            'date_of_birth'
+        )->orderBy('id', 'DESC');
+    }
 }
