@@ -16,7 +16,7 @@ Install all the dependencies using composer
 
     composer install
 
-Copy the .env.example file and rename it to .env. Then make the neccessary changes
+Make the neccessary changes in your .env file
 
     Example:   
                 DB_DATABASE=YOUR-DATABASE_NAME
