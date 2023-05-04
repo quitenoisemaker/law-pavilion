@@ -82,7 +82,7 @@ class ClientDetailController extends Controller
      */
     public function filter(Request $request)
     {
-        $queryData = $this->clientDetailService->searchClientByLastName($request);
+        $queryData = $this->clientDetailService->searchClientByLastName($request->search_client);
 
         return [
             'success' => true,

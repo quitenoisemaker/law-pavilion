@@ -26,13 +26,14 @@ class ClientDetailService
     /**
      * search Client By LastName
      *
-     * @param  \Illuminate\Http\Request $request profile_image
+     * @param  string $search request
      * @return App\Http\Resources\ClientDetailResource $queryData
      */
-    public function searchClientByLastName($request)
+    public function searchClientByLastName($search)
     {
         $noOfRecords = 10;
-        $searchClient = $request->search_client;
+        $queryData = [];
+        $searchClient = $search;
         $query = ClientDetail::getClients();
 
         if ($searchClient) {
@@ -40,7 +41,6 @@ class ClientDetailService
         }
         $query = $query->paginate($noOfRecords);
 
-        $queryData = [];
         $queryData = ClientDetailResource::collection($query);
 
         return $queryData;
