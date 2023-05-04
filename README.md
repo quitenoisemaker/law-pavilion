@@ -38,7 +38,7 @@ You can now access the server at http://localhost:8000
     php artisan send:image-reminder
 
 ## Note
-Run queue to send notifications
+Run queue to send notifications and also configure Laravel’s email services via your application’s config/mail.php configuration file.
 
      php artisan queue:work
 
